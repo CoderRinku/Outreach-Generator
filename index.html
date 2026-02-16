@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Outreach Generator | High-Converting Scripts</title>
+    <title>Agency Outreach Toolkit | SR Orbit</title>
     <style>
         /* Modern Reset & Base Styles */
         * {
@@ -15,170 +15,204 @@
         }
 
         body {
-            background-color: #f8f9fa;
+            background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        /* Main Container Card */
-        .container {
-            background: #ffffff;
+        /* Main Container */
+        .main-wrapper {
             width: 100%;
             max-width: 600px;
-            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            /* Space between tools */
+        }
+
+        /* Card Style */
+        .card {
+            background: #ffffff;
+            padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #ffffff;
             transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #eef1f6;
         }
 
         h1 {
             text-align: center;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 8px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 5px;
             font-size: 1.8rem;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 10px;
+        }
+
+        .badge {
+            background: #e0f2fe;
+            color: #0284c7;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
         p.subtitle {
             text-align: center;
-            color: #666;
+            color: #6b7280;
             font-size: 0.95rem;
             margin-bottom: 30px;
         }
 
         /* Form Styles */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
             font-size: 0.9rem;
-            color: #444;
+            color: #374151;
         }
 
         input,
-        select {
+        select,
+        textarea {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #e1e4e8;
+            padding: 12px;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-            font-size: 1rem;
-            background-color: #fafbfc;
+            font-size: 0.95rem;
+            background-color: #f9fafb;
             transition: all 0.2s ease;
             outline: none;
         }
 
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
         input:focus,
-        select:focus {
-            border-color: #007bff;
+        select:focus,
+        textarea:focus {
+            border-color: #2563eb;
             background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         /* Button Styles */
-        .btn-primary {
+        .btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            transition: transform 0.1s ease, filter 0.2s ease;
             margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
         }
 
-        .btn-primary:hover {
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+
+        .btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+            filter: brightness(110%);
         }
 
-        .btn-primary:active {
+        .btn:active {
             transform: translateY(1px);
         }
 
         /* Output Section */
         #output-section {
             display: none;
-            /* Hidden by default */
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 30px;
+            margin-top: 30px;
             animation: fadeIn 0.4s ease-out;
         }
 
-        .message-card {
-            background: #fdfdfe;
-            border: 1px solid #edf2f7;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
+        .message-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
         }
 
         .message-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .message-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.8rem;
             font-weight: 700;
-            color: #8898aa;
+            color: #64748b;
+            text-transform: uppercase;
         }
 
         .btn-copy {
             background: #fff;
-            border: 1px solid #d1d5db;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            color: #4b5563;
+            border: 1px solid #cbd5e1;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.75rem;
             cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-
-        .btn-copy:hover {
-            background: #f3f4f6;
-            border-color: #9ca3af;
+            color: #475569;
         }
 
         .message-content {
-            font-size: 0.95rem;
-            color: #2d3748;
+            font-size: 0.9rem;
+            color: #334155;
             white-space: pre-wrap;
-            /* Preserves line breaks */
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #f1f1f1;
         }
 
         /* Footer */
         footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: #888;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #9ca3af;
             text-align: center;
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -190,216 +224,169 @@
                 transform: translateY(0);
             }
         }
-
-        /* Responsiveness */
-        @media (max-width: 480px) {
-            .container {
-                padding: 25px;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>The Outreach Generator</h1>
-        <p class="subtitle">Craft highly personalized, high-converting messages in seconds.</p>
+    <div class="main-wrapper">
 
-        <form id="generatorForm">
-            <div class="form-group">
-                <label for="clientName">Client Name</label>
-                <input type="text" id="clientName" placeholder="e.g. John Doe" required>
-            </div>
+        <div>
+            <h1>Agency Outreach Toolkit</h1>
+            <p class="subtitle">Automate your workflow. Scale your business.</p>
+        </div>
 
-            <div class="form-group">
-                <label for="businessName">Business Name</label>
-                <input type="text" id="businessName" placeholder="e.g. Acme Services" required>
-            </div>
+        <div class="card">
+            <h2>
+                <span style="font-size: 1.4rem;">✍️</span> Script Generator
+                <span class="badge">Tool 01</span>
+            </h2>
 
-            <div class="form-group">
-                <label for="niche">Niche / Industry</label>
-                <select id="niche">
-                    <option value="Tree Service">Tree Service</option>
-                    <option value="Gym">Gym / Fitness Center</option>
-                    <option value="E-commerce">E-commerce Brand</option>
-                    <option value="Plumber">Plumbing / HVAC</option>
-                    <option value="Real Estate">Real Estate</option>
-                    <option value="Restaurant">Restaurant / Cafe</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="serviceType">Service You Offer</label>
-                <select id="serviceType">
-                    <option value="Logo Design">Logo & Branding</option>
-                    <option value="Website Design">Website Design</option>
-                    <option value="SEO Optimization">SEO / Ranking</option>
-                    <option value="Social Media Growth">Social Media Growth</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn-primary">Generate Outreach 🚀</button>
-        </form>
-
-        <div id="output-section">
-            <div class="message-card">
-                <div class="message-header">
-                    <span class="message-title">1. Cold Email (Formal yet Human)</span>
-                    <button class="btn-copy" onclick="copyToClipboard('emailOutput', this)">Copy</button>
+            <form id="generatorForm">
+                <div class="form-group">
+                    <label>Client Name</label>
+                    <input type="text" id="clientName" placeholder="e.g. John Doe">
                 </div>
-                <div id="emailOutput" class="message-content"></div>
-            </div>
 
-            <div class="message-card">
-                <div class="message-header">
-                    <span class="message-title">2. WhatsApp / Direct Message</span>
-                    <button class="btn-copy" onclick="copyToClipboard('dmOutput', this)">Copy</button>
+                <div class="form-group">
+                    <label>Business Name</label>
+                    <input type="text" id="businessName" placeholder="e.g. Acme Co.">
                 </div>
-                <div id="dmOutput" class="message-content"></div>
-            </div>
 
-            <div class="message-card">
-                <div class="message-header">
-                    <span class="message-title">3. Follow-up (The "Nudge")</span>
-                    <button class="btn-copy" onclick="copyToClipboard('followUpOutput', this)">Copy</button>
+                <div class="form-group">
+                    <label>Niche</label>
+                    <select id="niche">
+                        <option value="Tree Service">Tree Service</option>
+                        <option value="Gym">Gym / Fitness</option>
+                        <option value="E-commerce">E-commerce</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="Real Estate">Real Estate</option>
+                    </select>
                 </div>
-                <div id="followUpOutput" class="message-content"></div>
+
+                <div class="form-group">
+                    <label>Service</label>
+                    <select id="serviceType">
+                        <option value="Web Design">Web Design</option>
+                        <option value="SEO">SEO Ranking</option>
+                        <option value="Logo Design">Logo & Branding</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Generate Scripts</button>
+            </form>
+
+            <div id="output-section">
+                <div class="message-box">
+                    <div class="message-header">
+                        <span class="message-title">Cold Email</span>
+                        <button class="btn-copy" onclick="copyText('emailOutput', this)">Copy</button>
+                    </div>
+                    <div id="emailOutput" class="message-content"></div>
+                </div>
+
+                <div class="message-box">
+                    <div class="message-header">
+                        <span class="message-title">WhatsApp Message</span>
+                        <button class="btn-copy" onclick="copyText('dmOutput', this)">Copy</button>
+                    </div>
+                    <div id="dmOutput" class="message-content"></div>
+                </div>
             </div>
         </div>
+
+        <div class="card" style="border-top: 4px solid #22c55e;">
+            <h2>
+                <span style="font-size: 1.4rem;">💬</span> Direct WhatsApp
+                <span class="badge" style="background:#dcfce7; color:#166534;">Tool 02</span>
+            </h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
+                Chat without saving numbers. Enter number with country code.
+            </p>
+
+            <div class="form-group">
+                <label>Phone Number (with Country Code)</label>
+                <input type="text" id="waNumber" placeholder="e.g. 15551234567" oninput="validateNumber()">
+            </div>
+
+            <div class="form-group">
+                <label>Message (Optional)</label>
+                <textarea id="waMessage" placeholder="Paste your generated script here..."></textarea>
+            </div>
+
+            <button onclick="openWhatsApp()" class="btn btn-success">
+                Open WhatsApp Chat ↗
+            </button>
+        </div>
+
     </div>
 
     <footer>
-        Built for High-Converting Outreach 🚀
+        Built by SR Orbit | Internal Tools v1.0
     </footer>
 
     <script>
+        // --- TOOL 1: SCRIPT GENERATOR ---
         document.getElementById('generatorForm').addEventListener('submit', function (e) {
             e.preventDefault();
-
-            // 1. Grab Values
-            const clientName = document.getElementById('clientName').value.trim();
-            const businessName = document.getElementById('businessName').value.trim();
+            const name = document.getElementById('clientName').value || "{Name}";
+            const business = document.getElementById('businessName').value || "{Business}";
             const niche = document.getElementById('niche').value;
-            const serviceType = document.getElementById('serviceType').value;
+            const service = document.getElementById('serviceType').value;
 
-            // 2. Generate Logic
-            const emailText = generateEmail(clientName, businessName, niche, serviceType);
-            const dmText = generateDM(clientName, businessName, niche, serviceType);
-            const followUpText = generateFollowUp(clientName, businessName);
-
-            // 3. Render Output
-            document.getElementById('emailOutput').innerText = emailText;
-            document.getElementById('dmOutput').innerText = dmText;
-            document.getElementById('followUpOutput').innerText = followUpText;
-
-            // 4. Show Section
-            document.getElementById('output-section').style.display = 'block';
-
-            // Scroll to results
-            document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Helper: Get Pain Point based on Niche
-        function getNichePainPoint(niche) {
-            const points = {
-                'Tree Service': 'dominating local Google Maps results when storms hit',
-                'Gym': 'turning casual January visitors into long-term loyal members',
-                'E-commerce': 'reducing cart abandonment with smoother visuals',
-                'Plumber': 'being the first number they call during an emergency leak',
-                'Real Estate': 'capturing leads before Zillow grabs them',
-                'Restaurant': 'converting Google Maps searches into reserved tables'
-            };
-            return points[niche] || 'standing out in a crowded local market';
-        }
-
-        // Helper: Get Benefit based on Service
-        function getServiceBenefit(service) {
-            const benefits = {
-                'Logo Design': 'a brand identity that actually builds trust instantly',
-                'Website Design': 'a high-performance site that converts visitors into paying clients',
-                'SEO Optimization': 'ranking explicitly for high-intent keywords in your area',
-                'Social Media Growth': 'a content strategy that brings real engagement, not just likes'
-            };
-            return benefits[service] || 'improving your digital presence';
-        }
-
-        // --- Generator Functions ---
-
-        function generateEmail(name, business, niche, service) {
-            const painPoint = getNichePainPoint(niche);
-            const benefit = getServiceBenefit(service);
-
-            return `Subject: Idea for ${business} (No pitch, just value)
+            // Simple logic for demo
+            const email = `Subject: Quick question about ${business}
 
 Hi ${name},
 
-I was looking into the ${niche} market locally and your brand, ${business}, stood out. 
+I was looking at the top ${niche} providers in the area and ${business} caught my eye.
 
-However, I noticed a small gap that might be stopping you from ${painPoint}.
+I noticed a small opportunity to improve your ${service} that most competitors miss.
 
-I specialize in ${service} specifically for businesses like yours. I’ve sketched out a quick concept on how we could tackle this to ensure you get ${benefit}.
-
-I’m not trying to sell you a package right now. I just want to share the idea.
-
-Mind if I send over a quick 2-minute video breakdown?
-
-Best,
-
-[Your Name]`;
-        }
-
-        function generateDM(name, business, niche, service) {
-            return `Hey ${name} 👋 – just saw ${business} online.
-
-Love what you're doing in the ${niche} space! I had a quick idea regarding your ${service.toLowerCase()} that could help with ${getNichePainPoint(niche)}.
-
-No sales pitch, just wanted to share the insight. Open to hearing it?`;
-        }
-
-        function generateFollowUp(name, business) {
-            return `Hi ${name},
-
-Creating a lot of noise in your inbox isn't my goal. 
-
-I just genuinely believe the ${business} brand has untapped potential we could unlock this month.
-
-If this isn't a priority right now, no worries at all—I'll stop reaching out. 
-
-But if you are curious about that idea I mentioned, let me know?
+Mind if I send over a 2-min video explaining it?
 
 Best,
 [Your Name]`;
+
+            const dm = `Hey ${name} 👋 Saw ${business} online. Love what you're doing in the ${niche} space. Had a quick idea for your ${service}. Open to hearing it?`;
+
+            document.getElementById('emailOutput').innerText = email;
+            document.getElementById('dmOutput').innerText = dm;
+            document.getElementById('output-section').style.display = 'block';
+        });
+
+        function copyText(id, btn) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText);
+            let original = btn.innerText;
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = original, 1500);
         }
 
-        // --- Copy Functionality ---
+        // --- TOOL 2: WHATSAPP OPENER ---
 
-        function copyToClipboard(elementId, btnElement) {
-            const text = document.getElementById(elementId).innerText;
+        function validateNumber() {
+            // Remove non-numeric chars visual helper
+            let input = document.getElementById('waNumber');
+            input.value = input.value.replace(/[^0-9+]/g, '');
+        }
 
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = btnElement.innerText;
+        function openWhatsApp() {
+            let number = document.getElementById('waNumber').value;
+            let message = document.getElementById('waMessage').value;
 
-                // Visual feedback
-                btnElement.innerText = "Copied!";
-                btnElement.style.background = "#e6fffa";
-                btnElement.style.borderColor = "#38b2ac";
-                btnElement.style.color = "#2c7a7b";
+            // Clean number: remove everything except digits
+            let cleanNumber = number.replace(/\D/g, '');
 
-                // Revert after 2 seconds
-                setTimeout(() => {
-                    btnElement.innerText = originalText;
-                    btnElement.style.background = "";
-                    btnElement.style.borderColor = "";
-                    btnElement.style.color = "";
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+            if (cleanNumber.length < 10) {
+                alert("Please enter a valid phone number with country code (e.g., 15550000000)");
+                return;
+            }
+
+            // Construct URL
+            let url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+
+            // Open in new tab
+            window.open(url, '_blank');
         }
     </script>
 </body>
