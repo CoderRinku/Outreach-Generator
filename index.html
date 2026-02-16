@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Outreach Generator | High-Converting Scripts</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main Container Card */
+        .container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #fafbfc;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #007bff;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        /* Output Section */
+        #output-section {
+            display: none;
+            /* Hidden by default */
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .message-card {
+            background: #fdfdfe;
+            border: 1px solid #edf2f7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .message-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            color: #8898aa;
+        }
+
+        .btn-copy {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .btn-copy:hover {
+            background: #f3f4f6;
+            border-color: #9ca3af;
+        }
+
+        .message-content {
+            font-size: 0.95rem;
+            color: #2d3748;
+            white-space: pre-wrap;
+            /* Preserves line breaks */
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #f1f1f1;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsiveness */
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>The Outreach Generator</h1>
+        <p class="subtitle">Craft highly personalized, high-converting messages in seconds.</p>
+
+        <form id="generatorForm">
+            <div class="form-group">
+                <label for="clientName">Client Name</label>
+                <input type="text" id="clientName" placeholder="e.g. John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="businessName">Business Name</label>
+                <input type="text" id="businessName" placeholder="e.g. Acme Services" required>
+            </div>
+
+            <div class="form-group">
+                <label for="niche">Niche / Industry</label>
+                <select id="niche">
+                    <option value="Tree Service">Tree Service</option>
+                    <option value="Gym">Gym / Fitness Center</option>
+                    <option value="E-commerce">E-commerce Brand</option>
+                    <option value="Plumber">Plumbing / HVAC</option>
+                    <option value="Real Estate">Real Estate</option>
+                    <option value="Restaurant">Restaurant / Cafe</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="serviceType">Service You Offer</label>
+                <select id="serviceType">
+                    <option value="Logo Design">Logo & Branding</option>
+                    <option value="Website Design">Website Design</option>
+                    <option value="SEO Optimization">SEO / Ranking</option>
+                    <option value="Social Media Growth">Social Media Growth</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary">Generate Outreach 🚀</button>
+        </form>
+
+        <div id="output-section">
+            <div class="message-card">
+                <div class="message-header">
+                    <span class="message-title">1. Cold Email (Formal yet Human)</span>
+                    <button class="btn-copy" onclick="copyToClipboard('emailOutput', this)">Copy</button>
+                </div>
+                <div id="emailOutput" class="message-content"></div>
+            </div>
+
+            <div class="message-card">
+                <div class="message-header">
+                    <span class="message-title">2. WhatsApp / Direct Message</span>
+                    <button class="btn-copy" onclick="copyToClipboard('dmOutput', this)">Copy</button>
+                </div>
+                <div id="dmOutput" class="message-content"></div>
+            </div>
+
+            <div class="message-card">
+                <div class="message-header">
+                    <span class="message-title">3. Follow-up (The "Nudge")</span>
+                    <button class="btn-copy" onclick="copyToClipboard('followUpOutput', this)">Copy</button>
+                </div>
+                <div id="followUpOutput" class="message-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Built for High-Converting Outreach 🚀
+    </footer>
+
+    <script>
+        document.getElementById('generatorForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // 1. Grab Values
+            const clientName = document.getElementById('clientName').value.trim();
+            const businessName = document.getElementById('businessName').value.trim();
+            const niche = document.getElementById('niche').value;
+            const serviceType = document.getElementById('serviceType').value;
+
+            // 2. Generate Logic
+            const emailText = generateEmail(clientName, businessName, niche, serviceType);
+            const dmText = generateDM(clientName, businessName, niche, serviceType);
+            const followUpText = generateFollowUp(clientName, businessName);
+
+            // 3. Render Output
+            document.getElementById('emailOutput').innerText = emailText;
+            document.getElementById('dmOutput').innerText = dmText;
+            document.getElementById('followUpOutput').innerText = followUpText;
+
+            // 4. Show Section
+            document.getElementById('output-section').style.display = 'block';
+
+            // Scroll to results
+            document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Helper: Get Pain Point based on Niche
+        function getNichePainPoint(niche) {
+            const points = {
+                'Tree Service': 'dominating local Google Maps results when storms hit',
+                'Gym': 'turning casual January visitors into long-term loyal members',
+                'E-commerce': 'reducing cart abandonment with smoother visuals',
+                'Plumber': 'being the first number they call during an emergency leak',
+                'Real Estate': 'capturing leads before Zillow grabs them',
+                'Restaurant': 'converting Google Maps searches into reserved tables'
+            };
+            return points[niche] || 'standing out in a crowded local market';
+        }
+
+        // Helper: Get Benefit based on Service
+        function getServiceBenefit(service) {
+            const benefits = {
+                'Logo Design': 'a brand identity that actually builds trust instantly',
+                'Website Design': 'a high-performance site that converts visitors into paying clients',
+                'SEO Optimization': 'ranking explicitly for high-intent keywords in your area',
+                'Social Media Growth': 'a content strategy that brings real engagement, not just likes'
+            };
+            return benefits[service] || 'improving your digital presence';
+        }
+
+        // --- Generator Functions ---
+
+        function generateEmail(name, business, niche, service) {
+            const painPoint = getNichePainPoint(niche);
+            const benefit = getServiceBenefit(service);
+
+            return `Subject: Idea for ${business} (No pitch, just value)
+
+Hi ${name},
+
+I was looking into the ${niche} market locally and your brand, ${business}, stood out. 
+
+However, I noticed a small gap that might be stopping you from ${painPoint}.
+
+I specialize in ${service} specifically for businesses like yours. I’ve sketched out a quick concept on how we could tackle this to ensure you get ${benefit}.
+
+I’m not trying to sell you a package right now. I just want to share the idea.
+
+Mind if I send over a quick 2-minute video breakdown?
+
+Best,
+
+[Your Name]`;
+        }
+
+        function generateDM(name, business, niche, service) {
+            return `Hey ${name} 👋 – just saw ${business} online.
+
+Love what you're doing in the ${niche} space! I had a quick idea regarding your ${service.toLowerCase()} that could help with ${getNichePainPoint(niche)}.
+
+No sales pitch, just wanted to share the insight. Open to hearing it?`;
+        }
+
+        function generateFollowUp(name, business) {
+            return `Hi ${name},
+
+Creating a lot of noise in your inbox isn't my goal. 
+
+I just genuinely believe the ${business} brand has untapped potential we could unlock this month.
+
+If this isn't a priority right now, no worries at all—I'll stop reaching out. 
+
+But if you are curious about that idea I mentioned, let me know?
+
+Best,
+[Your Name]`;
+        }
+
+        // --- Copy Functionality ---
+
+        function copyToClipboard(elementId, btnElement) {
+            const text = document.getElementById(elementId).innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerText;
+
+                // Visual feedback
+                btnElement.innerText = "Copied!";
+                btnElement.style.background = "#e6fffa";
+                btnElement.style.borderColor = "#38b2ac";
+                btnElement.style.color = "#2c7a7b";
+
+                // Revert after 2 seconds
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.style.background = "";
+                    btnElement.style.borderColor = "";
+                    btnElement.style.color = "";
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
